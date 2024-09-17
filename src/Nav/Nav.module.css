@@ -1,0 +1,16 @@
+.nav {
+  background-color: var(--primary-color);
+  padding: 20px;
+}
+
+.ul {
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
