@@ -1,7 +1,8 @@
 import styles from "./Nav.module.css";
 import { Link } from "react-router-dom";
-
-function Nav() {
+import cartIcon from "../assets/cart-outline.svg";
+import PropTypes from "prop-types";
+function Nav({ cartCount }) {
   return (
     <nav className={styles.nav}>
       <ul className={styles.ul}>
@@ -17,12 +18,17 @@ function Nav() {
         </li>
         <li>
           <Link to="cart" className={styles.link}>
-            Cart
+            <img src={cartIcon} alt="" width="32px" height="auto" />
+            <span>{cartCount}</span>
           </Link>
         </li>
       </ul>
     </nav>
   );
 }
+
+Nav.propTypes = {
+  cartCount: PropTypes.number,
+};
 
 export default Nav;

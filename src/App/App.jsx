@@ -7,7 +7,7 @@ function App() {
   const [cart, setCart] = useState({});
   return (
     <main>
-      <Nav />
+      <Nav cartCount={Object.keys(cart).length} />
       <Outlet context={[cart, setCart]} />
     </main>
   );
