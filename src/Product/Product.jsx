@@ -32,6 +32,7 @@ function Product({
         height="auto"
       ></img>
       <span className={styles.span}>{product.title}</span>
+      <span className={styles.span}>{`$${product.price}`}</span>
       <div>
         <button
           className={styles.btn}
@@ -47,11 +48,7 @@ function Product({
           +
         </button>
       </div>
-      {inCart ? (
-        <button className={styles.btn3} onClick={addToCart}>
-          Checkout
-        </button>
-      ) : (
+      {inCart ? null : (
         <button className={styles.btn2} onClick={addToCart}>
           Add to Cart
         </button>

@@ -35,12 +35,9 @@
   font-size: 1rem;
 }
 
-.btn3 {
-  composes: btn2;
-  width: 150px;
-}
 .span {
   flex: 1;
+  align-self: start;
 }
 
 .span2 {
