@@ -1,0 +1,6 @@
+.section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+  justify-items: center;
+  margin: 50px 200px;
+}

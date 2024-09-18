@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-
+import Product from "../Product/Product";
+import styles from "./Shop.module.css";
 function Shop() {
   const [products, setProducts] = useState([]);
 
@@ -10,7 +11,13 @@ function Shop() {
       setProducts(responseJSON);
     })();
   }, []);
-  return <section>{}</section>;
+  return (
+    <section className={styles.section}>
+      {products.map((i) => (
+        <Product key={i.id} product={i} />
+      ))}
+    </section>
+  );
 }
 
 export default Shop;
