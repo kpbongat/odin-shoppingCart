@@ -1,34 +1,61 @@
 import { useState } from "react";
 import productIcon from "../assets/help.svg";
 import styles from "./Product.module.css";
-function Product({ product }) {
-  const [quantity, setQuantity] = useState(0);
+function Product({
+  product,
+  initialQuantity = 0,
+  cart,
+  setCart,
+  inCart = false,
+}) {
+  const [quantity, setQuantity] = useState(initialQuantity);
 
-  function subQuantity() {
-    setQuantity(quantity - 1);
+  function changeQuantity(newQuantity) {
+    setQuantity(newQuantity);
+    if (inCart) {
+      const cartProduct = { product, quantity: newQuantity };
+      setCart({ ...cart, [product.id]: cartProduct });
+    }
   }
-  function addQuantity() {
-    setQuantity(quantity + 1);
+
+  function addToCart() {
+    const cartProduct = { product, quantity: quantity };
+    setCart({ ...cart, [product.id]: cartProduct });
   }
   return (
-    <div className={styles.div}>
+    <div className={inCart ? styles.div2 : styles.div}>
       <img
-        className={styles.img}
+        className={inCart ? styles.img2 : styles.img}
         src={productIcon}
         alt=""
         width="64px"
         height="auto"
       ></img>
-      <span>{product.title}</span>
+      <span className={styles.span}>{product.title}</span>
       <div>
-        <button className={styles.btn} onClick={subQuantity}>
+        <button
+          className={styles.btn}
+          onClick={() => changeQuantity(quantity - 1)}
+        >
           -
         </button>
-        <span className={styles.span}>{quantity}</span>
-        <button className={styles.btn} onClick={addQuantity}>
+        <span className={styles.span2}>{quantity}</span>
+        <button
+          className={styles.btn}
+          onClick={() => changeQuantity(quantity + 1)}
+        >
           +
         </button>
       </div>
+      {inCart ? (
+        <button className={styles.btn3} onClick={addToCart}>
+          Checkout
+        </button>
+      ) : (
+        <button className={styles.btn2} onClick={addToCart}>
+          Add to Cart
+        </button>
+      )}
     </div>
   );
 }

@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 import Nav from "../Nav/Nav";
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState({});
   return (
     <main>
       <Nav />
