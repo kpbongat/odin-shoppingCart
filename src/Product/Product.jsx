@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import { useState } from "react";
 import productIcon from "../assets/help.svg";
 import styles from "./Product.module.css";
@@ -56,4 +58,12 @@ function Product({
     </div>
   );
 }
+
+Product.propTypes = {
+  product: PropTypes.object,
+  initialQuantity: PropTypes.number,
+  cart: PropTypes.object,
+  setCart: PropTypes.func,
+  inCart: PropTypes.bool,
+};
 export default Product;
