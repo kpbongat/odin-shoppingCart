@@ -25,7 +25,7 @@ function Product({
     setCart({ ...cart, [product.id]: cartProduct });
   }
   return (
-    <div className={inCart ? styles.div2 : styles.div}>
+    <div data-testid={"product"} className={inCart ? styles.div2 : styles.div}>
       <img
         className={inCart ? styles.img2 : styles.img}
         src={productIcon}
