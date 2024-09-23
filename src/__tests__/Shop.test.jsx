@@ -36,4 +36,19 @@ describe("product list", () => {
     render(<Shop />);
     expect(screen.queryAllByTestId("product").length).toBe(2);
   });
+  it("renders no products when none fetched", async () => {
+    const products = [];
+    const loading = false;
+    const Shop = await mockShop([products, loading]);
+    render(<Shop />);
+    expect(screen.queryAllByTestId("product").length).toBe(0);
+  });
+  it("displays loading message when loading", async () => {
+    const products = [];
+    const loading = true;
+    const Shop = await mockShop([products, loading]);
+
+    render(<Shop />);
+    expect(screen.getByText("Loading products...")).toBeInTheDocument();
+  });
 });
