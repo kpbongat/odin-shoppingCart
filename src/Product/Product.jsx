@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 
 import { useState } from "react";
-import productIcon from "../assets/help.svg";
 import styles from "./Product.module.css";
 function Product({
   product,
@@ -28,33 +27,36 @@ function Product({
     <div data-testid={"product"} className={inCart ? styles.div2 : styles.div}>
       <img
         className={inCart ? styles.img2 : styles.img}
-        src={productIcon}
+        src={product.image}
         alt=""
         width="64px"
         height="auto"
       ></img>
-      <span className={styles.span}>{product.title}</span>
-      <span className={styles.span}>{`$${product.price}`}</span>
-      <div>
-        <button
-          className={styles.btn}
-          onClick={() => changeQuantity(quantity - 1)}
-        >
-          -
-        </button>
-        <span className={styles.span2}>{quantity}</span>
-        <button
-          className={styles.btn}
-          onClick={() => changeQuantity(quantity + 1)}
-        >
-          +
-        </button>
+
+      <div className={styles.desc}>
+        <span className={styles.span}>{product.title}</span>
+        <span className={styles.span}>{`$${product.price}`}</span>
+        <div className={styles.quantity}>
+          <button
+            className={styles.btn}
+            onClick={() => changeQuantity(quantity - 1)}
+          >
+            -
+          </button>
+          <span className={styles.span2}>{quantity}</span>
+          <button
+            className={styles.btn}
+            onClick={() => changeQuantity(quantity + 1)}
+          >
+            +
+          </button>
+        </div>
+        {inCart ? null : (
+          <button className={styles.btn2} onClick={addToCart}>
+            Add to Cart
+          </button>
+        )}
       </div>
-      {inCart ? null : (
-        <button className={styles.btn2} onClick={addToCart}>
-          Add to Cart
-        </button>
-      )}
     </div>
   );
 }
