@@ -3,13 +3,22 @@
   flex-direction: column;
   text-align: justify;
   justify-content: space-between;
-  border: solid gray 1px;
+  border: solid white 1px;
+  box-shadow: rgb(0 0 0 / 0.1) 0px 3px 10px 1px;
+  border-radius: 20px;
   padding: 10px;
+}
+
+.div:hover {
+  box-shadow: rgb(0 0 0 / 0.2) 0px 3px 10px 1px;
 }
 
 .div2 {
   composes: div;
   flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
 }
 
 .desc {
@@ -34,16 +43,32 @@
 }
 
 .btn {
-  width: 50px;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
 }
 
+.btn:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
 .btn2 {
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
   height: 3rem;
   margin: 10px;
   background-color: var(--primary-color);
   color: white;
   font-weight: bold;
   font-size: 1rem;
+  transition: transform 100ms;
+}
+
+.btn2:hover {
+  transform: translateY(-3px);
 }
 
 .span {
