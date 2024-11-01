@@ -39,7 +39,7 @@ function Product({
         <div className={styles.quantity}>
           <button
             className={styles.btn}
-            onClick={() => changeQuantity(quantity - 1)}
+            onClick={() => changeQuantity(quantity - 1 < 0 ? 0 : quantity - 1)}
           >
             -
           </button>
