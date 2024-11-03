@@ -39,7 +39,6 @@
 
 .img2 {
   width: 128px;
-  width: 128px;
 }
 
 .btn {
@@ -69,9 +68,6 @@
 
 .btn2:hover {
   transform: translateY(-3px);
-}
-
-.span {
 }
 
 .span2 {

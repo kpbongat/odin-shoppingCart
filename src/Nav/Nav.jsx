@@ -1,6 +1,6 @@
 import styles from "./Nav.module.css";
 import { Link } from "react-router-dom";
-import cartIcon from "../assets/cart-outline.svg";
+import cartIcon from "../../public/assets/cart-outline.svg";
 import PropTypes from "prop-types";
 function Nav({ cartCount }) {
   return (
