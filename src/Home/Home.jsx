@@ -1,6 +1,6 @@
 import styles from "./Home.module.css";
-import saleBanner1 from "../../public/assets/saleBanner1.jpg";
-import saleBanner2 from "../../public/assets/saleBanner2.jpg";
+import saleBanner1 from "/src/assets/saleBanner1.jpg";
+import saleBanner2 from "/src/assets/saleBanner2.jpg";
 function Home() {
   return (
     <section className={styles.section}>
