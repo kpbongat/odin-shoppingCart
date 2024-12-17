@@ -1,19 +1,15 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import Product from "../Product/Product";
 import styles from "./Shop.module.css";
 import { useOutletContext } from "react-router-dom";
 import CategoryFieldset from "../CategoryFieldset/CategoryFieldset";
 import SortFieldset from "../SortFieldset/SortFieldset";
-function Shop() {
-  const [products, setProducts] = useState([]);
-  const [sortCategory, setSortCategory] = useState(null);
-  const [filterCategory, setFilterCategory] = useState(null);
-  const [cart, setCart] = useOutletContext();
-  const [loading, setLoading] = useState(true);
-  const categories = products.reduce((categories, i) => {
-    if (!categories.includes(i.category)) {
+
+function reduceCategories(products, filterCategory) {
+  return products.reduce((array, i) => {
+    if (!array.includes(i.category)) {
       return [
-        ...categories,
+        ...array,
         ...(!filterCategory
           ? [i.category]
           : i.category === filterCategory
@@ -21,8 +17,20 @@ function Shop() {
           : []),
       ];
     }
-    return categories;
+    return array;
   }, []);
+}
+function Shop() {
+  const [products, setProducts] = useState([]);
+  const [sortCategory, setSortCategory] = useState(null);
+  const [filterCategory, setFilterCategory] = useState(null);
+  const [cart, setCart] = useOutletContext();
+  const [loading, setLoading] = useState(true);
+
+  const categories = useMemo(
+    () => reduceCategories(products, filterCategory),
+    [products, filterCategory]
+  );
 
   useEffect(() => {
     (async () => {
@@ -32,6 +40,7 @@ function Shop() {
       setLoading(false);
     })();
   }, []);
+
   if (loading) {
     return <section className={styles.section}>Loading products...</section>;
   }
