@@ -2,7 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import Product from "../Product/Product";
 import styles from "./Cart.module.css";
 function Cart() {
-  const [cart, setCart] = useOutletContext();
+  const { cart, setCart } = useOutletContext();
   function clearCart() {
     setCart({});
   }

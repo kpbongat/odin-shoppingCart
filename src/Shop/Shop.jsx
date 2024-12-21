@@ -21,10 +21,9 @@ function reduceCategories(products, filterCategory) {
   }, []);
 }
 function Shop() {
-  const [products, setProducts] = useState([]);
   const [sortCategory, setSortCategory] = useState(null);
   const [filterCategory, setFilterCategory] = useState(null);
-  const [cart, setCart] = useOutletContext();
+  const { cart, setCart, products, setProducts } = useOutletContext();
   const [loading, setLoading] = useState(true);
 
   const categories = useMemo(
