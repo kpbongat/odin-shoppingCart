@@ -26,6 +26,13 @@
   flex-direction: column;
 }
 
+.desc2 {
+  composes: desc;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+}
 .img {
   height: 256px;
   width: 100%;

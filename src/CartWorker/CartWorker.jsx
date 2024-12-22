@@ -21,8 +21,13 @@ function CartWorker({
     const cartProduct = { product, quantity: quantity };
     setCart({ ...cart, [product.id]: cartProduct });
   }
+
+  function removeFromCart() {
+    const { [product.id]: oldProduct, ...newCart } = cart;
+    setCart(newCart);
+  }
   return (
-    <div className={styles.desc}>
+    <>
       <div className={styles.quantity}>
         <button
           className={styles.btn}
@@ -38,12 +43,16 @@ function CartWorker({
           +
         </button>
       </div>
-      {cartPage ? null : (
+      {cartPage ? (
+        <button className={styles.btn2} onClick={removeFromCart}>
+          Remove
+        </button>
+      ) : (
         <button className={styles.btn2} onClick={addToCart}>
           Add to Cart
         </button>
       )}
-    </div>
+    </>
   );
 }
 export default CartWorker;

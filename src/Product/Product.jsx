@@ -18,13 +18,13 @@ function Product({ children, product, cartPage = false }) {
         ></img>
       </Link>
 
-      <div className={styles.desc}>
+      <div className={cartPage ? styles.desc2 : styles.desc}>
         <Link to={product.title} className={styles.link}>
           <span className={styles.span}>{product.title}</span>
         </Link>
         <span className={styles.span}>{`$${product.price}`}</span>
+        {children}
       </div>
-      {children}
     </div>
   );
 }
