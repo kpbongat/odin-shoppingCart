@@ -26,10 +26,15 @@ function Cart() {
       ))}
       <div>
         Subtotal:
-        {`$${Object.keys(cart).reduce(
-          (subtotal, i) => subtotal + cart[i].product.price * cart[i].quantity,
-          0
-        )}`}
+        {`$${
+          Math.round(
+            Object.keys(cart).reduce(
+              (subtotal, i) =>
+                subtotal + cart[i].product.price * cart[i].quantity,
+              0
+            ) * 100
+          ) / 100
+        }`}
       </div>
       <button className={styles.btn} onClick={clearCart}>
         Checkout
