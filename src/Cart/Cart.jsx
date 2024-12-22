@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import Product from "../Product/Product";
 import styles from "./Cart.module.css";
+import CartWorker from "../CartWorker/CartWorker";
 function Cart() {
   const { cart, setCart } = useOutletContext();
   function clearCart() {
@@ -12,11 +13,16 @@ function Cart() {
         <Product
           key={cart[i].product.id}
           product={cart[i].product}
-          initialQuantity={cart[i].quantity}
-          cart={cart}
-          setCart={setCart}
-          inCart={true}
-        />
+          cartPage={true}
+        >
+          <CartWorker
+            product={cart[i].product}
+            cart={cart}
+            setCart={setCart}
+            initialQuantity={cart[i].quantity}
+            cartPage={true}
+          />
+        </Product>
       ))}
       <div>
         Subtotal:

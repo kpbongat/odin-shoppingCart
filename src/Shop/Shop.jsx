@@ -4,6 +4,7 @@ import styles from "./Shop.module.css";
 import { useOutletContext } from "react-router-dom";
 import CategoryFieldset from "../CategoryFieldset/CategoryFieldset";
 import SortFieldset from "../SortFieldset/SortFieldset";
+import CartWorker from "../CartWorker/CartWorker";
 
 function reduceCategories(products, filterCategory) {
   return products.reduce((array, i) => {
@@ -60,7 +61,9 @@ function Shop() {
           )
           .sort(!sortCategory ? (a, b) => +b.id - +a.id : sortCategory)
           .map((i) => (
-            <Product key={i.id} product={i} cart={cart} setCart={setCart} />
+            <Product key={i.id} product={i}>
+              <CartWorker product={i} cart={cart} setCart={setCart} />
+            </Product>
           ))}
       </section>
     </section>

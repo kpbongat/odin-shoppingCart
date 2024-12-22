@@ -1,33 +1,16 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import { useState } from "react";
 import styles from "./Product.module.css";
-function Product({
-  product,
-  initialQuantity = 0,
-  cart,
-  setCart,
-  inCart = false,
-}) {
-  const [quantity, setQuantity] = useState(initialQuantity);
 
-  function changeQuantity(newQuantity) {
-    setQuantity(newQuantity);
-    if (inCart) {
-      const cartProduct = { product, quantity: newQuantity };
-      setCart({ ...cart, [product.id]: cartProduct });
-    }
-  }
-
-  function addToCart() {
-    const cartProduct = { product, quantity: quantity };
-    setCart({ ...cart, [product.id]: cartProduct });
-  }
+function Product({ children, product, cartPage = false }) {
   return (
-    <div data-testid={"product"} className={inCart ? styles.div2 : styles.div}>
+    <div
+      data-testid={"product"}
+      className={cartPage ? styles.div2 : styles.div}
+    >
       <Link to={product.title} className={styles.link}>
         <img
-          className={inCart ? styles.img2 : styles.img}
+          className={cartPage ? styles.img2 : styles.img}
           src={product.image}
           alt=""
           width="64px"
@@ -40,27 +23,8 @@ function Product({
           <span className={styles.span}>{product.title}</span>
         </Link>
         <span className={styles.span}>{`$${product.price}`}</span>
-        <div className={styles.quantity}>
-          <button
-            className={styles.btn}
-            onClick={() => changeQuantity(quantity - 1 < 0 ? 0 : quantity - 1)}
-          >
-            -
-          </button>
-          <span className={styles.span2}>{quantity}</span>
-          <button
-            className={styles.btn}
-            onClick={() => changeQuantity(quantity + 1)}
-          >
-            +
-          </button>
-        </div>
-        {inCart ? null : (
-          <button className={styles.btn2} onClick={addToCart}>
-            Add to Cart
-          </button>
-        )}
       </div>
+      {children}
     </div>
   );
 }
@@ -68,8 +32,5 @@ function Product({
 Product.propTypes = {
   product: PropTypes.object,
   initialQuantity: PropTypes.number,
-  cart: PropTypes.object,
-  setCart: PropTypes.func,
-  inCart: PropTypes.bool,
 };
 export default Product;
