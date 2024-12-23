@@ -1,16 +1,12 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import styles from "./Product.module.css";
 
-function Product({ children, product, cartPage = false }) {
+function Product({ children, product, styles }) {
   return (
-    <div
-      data-testid={"product"}
-      className={cartPage ? styles.div2 : styles.div}
-    >
+    <div data-testid={"product"} className={styles.div}>
       <Link to={product.title} className={styles.link}>
         <img
-          className={cartPage ? styles.img2 : styles.img}
+          className={styles.img}
           src={product.image}
           alt=""
           width="64px"
@@ -18,7 +14,7 @@ function Product({ children, product, cartPage = false }) {
         ></img>
       </Link>
 
-      <div className={cartPage ? styles.desc2 : styles.desc}>
+      <div className={styles.desc}>
         <Link to={product.title} className={styles.link}>
           <span className={styles.span}>{product.title}</span>
         </Link>

@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import Product from "../Product/Product";
 import styles from "./Cart.module.css";
+import productStyles from "../Product/ProductCart.module.css";
 import CartWorker from "../CartWorker/CartWorker";
 function Cart() {
   const { cart, setCart } = useOutletContext();
@@ -13,7 +14,7 @@ function Cart() {
         <Product
           key={cart[i].product.id}
           product={cart[i].product}
-          cartPage={true}
+          styles={productStyles}
         >
           <CartWorker
             product={cart[i].product}
@@ -24,7 +25,7 @@ function Cart() {
           />
         </Product>
       ))}
-      <div>
+      <div className={styles.div}>
         Subtotal:
         {`$${
           Math.round(
@@ -35,10 +36,10 @@ function Cart() {
             ) * 100
           ) / 100
         }`}
+        <button className={styles.btn} onClick={clearCart}>
+          Checkout
+        </button>
       </div>
-      <button className={styles.btn} onClick={clearCart}>
-        Checkout
-      </button>
     </section>
   );
 }

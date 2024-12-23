@@ -1,12 +1,11 @@
 .div {
   display: flex;
   flex-direction: column;
-  text-align: justify;
-  justify-content: space-between;
-  border: solid white 1px;
+  text-align: center;
+  justify-content: space-around;
   box-shadow: rgb(0 0 0 / 0.1) 0px 3px 10px 1px;
-  border-radius: 20px;
-  padding: 10px;
+  margin: 0 128px;
+  padding: 32px;
 }
 
 .div:hover {

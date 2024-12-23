@@ -1,0 +1,27 @@
+.div {
+  composes: div from "./Product.module.css";
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.div:hover {
+  box-shadow: rgb(0 0 0 / 0.2) 0px 3px 10px 1px;
+}
+.desc {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 2fr repeat(3, 1fr);
+  justify-items: center;
+  align-items: center;
+}
+
+.img {
+  width: 128px;
+}
+
+.link {
+  color: black;
+  text-decoration: none;
+}
