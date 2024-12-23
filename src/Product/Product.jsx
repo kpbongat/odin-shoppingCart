@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Product({ children, product, styles }) {
   return (
     <div data-testid={"product"} className={styles.div}>
-      <Link to={product.title} className={styles.link}>
+      <Link to={`/shop/${product.title}`} className={styles.link}>
         <img
           className={styles.img}
           src={product.image}
@@ -15,7 +15,7 @@ function Product({ children, product, styles }) {
       </Link>
 
       <div className={styles.desc}>
-        <Link to={product.title} className={styles.link}>
+        <Link to={`/shop/${product.title}`} className={styles.link}>
           <span className={styles.span}>{product.title}</span>
         </Link>
         <span className={styles.span}>{`$${product.price}`}</span>
